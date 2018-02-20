@@ -1,0 +1,744 @@
+/* Autor y fecha */
+
+/* ESTILOS GENERALES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 20px;
+    color: #3f3f3f;
+    background-color: lightyellow;
+}
+a {
+    text-decoration: none;
+    color: chocolate;
+}
+a:hover {
+    color: orange;
+}
+a:active {color: crimson}
+/* a:visited {color:darkslateblue} */
+img {
+    max-width: 100%;
+}
+p {
+    padding: 10px;
+    line-height: 1.5em;
+}
+.boton {
+    margin: 40px;
+    color: white;
+    background: chocolate;
+    font-size: 22px;
+    padding: 12px;
+    border-radius: 25px;
+    cursor: pointer;
+    border: none;
+}
+.boton:hover { color: white;}
+
+.naranja { background-color: #EA5C1C;}
+.azul { background-color: #2DABE3;}
+.amarillo { background-color: #F3C100;}
+
+.naranja:hover { background-color: #DF4215;}
+.azul:hover { background-color: #0D71B9;}
+.amarillo:hover { background-color: #E8A50A;}
+
+.separador {
+    border: 1px solid chocolate;
+    display: none;
+    width: 60%;
+}
+
+/* ENREDO MIO */
+/* a[href="/"]:hover {
+    cursor: url('../img/icons8-hueso-del-perro-48(3).png'), auto;
+} */
+
+@keyframes intermitente {
+    0% { opacity: 0;}
+    50% { opacity: 1;}
+    100% { opacity: 0;}
+}
+
+/* CABECERA, CON BARRA DE NAVEGACIÓN */
+header {
+    /* position: absolute; */
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100px; /* Altura común de cabeceras: 80, 120, etc */
+    padding: 20px;
+    transition: all 500ms;
+}
+.normal {
+    box-shadow: 0 4px 8px gray;
+    /* position: initial; */
+    position: fixed;
+    background-color: rgba(251, 219, 180, 0.85);
+}
+header nav ul {
+    /* border: solid 1px white;    */
+    list-style: none;
+    display: flex;
+}
+header nav ul li {
+    padding: 10px;
+}
+header nav ul li a {color: white;}
+
+.normal nav ul li a {color: orange;}
+.normal nav ul li a.activo {color: crimson;}
+.normal nav ul li a:hover {color: orangered;}
+.normal nav ul li a:active {color: lightcoral;}
+
+.logo-normal {
+    display: none;
+}
+
+/* ------------------------------ Menú Hamburguesa */
+header .burger {
+    display: none;
+    color: white;
+    font-size: 36px;
+}
+.cerrar {
+    color: white;
+    font-size: 40px;
+    padding: 20px;
+    /* background-color: rgba(222, 183, 135, 0.55);     */
+}
+.normal .burger {
+    color: orange;
+}
+.menu {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    width: 80%;
+    height: 100vh;
+    background-color: rgba(222, 183, 135, 0.9);
+    display: none;
+    z-index: 10;
+    border-radius: 0 100px 100px 0;    
+}
+.menu div {
+    display: flex;
+    flex-direction: column;
+    /* padding-left: 20px; */
+}
+.menu div a {
+    color: white;
+    padding: 10px;
+    width: 100%; /* a mi el hover me funcionaba sin esto... */
+    white-space: pre; /* para q no pegue saltos el texto al desplegarse el menu */
+}
+.menu div .activo {
+    color: chocolate;
+}
+.menu div a:hover {
+    color: orangered;
+    background-color: rgb(231, 169, 93);
+}
+.menu div a:active {
+    color: crimson;
+}
+/* ------------------------ Menú Hamburguesa "2" */
+.burger2 {
+    display: none;
+}
+.barra {
+    height: 4px;
+    width: 30px;
+    margin: 8px;
+    background-color: chocolate;
+}
+.arriba, .media, .abajo {
+    transition: all 700ms ease;
+}
+.burger2.abierto .arriba {
+    transform: translateY(12px) rotateZ(45deg);
+}
+.burger2.abierto .media {
+    width: 0;
+}
+.burger2.abierto .abajo {
+    transform: translateY(-12px) rotateZ(-45deg);
+}
+.menu2 {
+    position: absolute;
+    top: 105px;
+    left: 0;
+    width: 80%;
+    height: calc(100vh - 105px);
+    background-color: rgba(222, 183, 135, 0.8);
+    z-index: 10;
+    display: none;
+    box-shadow: 4px 0px 8px gray;    
+}
+.todo {
+    height: calc(100vh - 105px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    white-space: nowrap;
+}
+.enlaces {
+    display: flex;
+    flex-direction: column;
+}
+.menu2 a {
+    color: chocolate;
+    padding: 10px 0 10px 20px;
+    width: 100%;
+    transform: translateX(-200px);
+}
+.menu2 a:nth-child(1) {
+    transition: transform 500ms ease-in-out;
+}
+.menu2 a:nth-child(2) {
+    transition: transform 700ms ease-in-out;
+}
+.menu2 a:nth-child(3) {
+    transition: transform 900ms ease-in-out;
+}
+.menu2 a:nth-child(4) {
+    transition: transform 1100ms ease-in-out;
+}
+.menu2 a:nth-child(5) {
+    transition: transform 1300ms ease-in-out;
+}
+.menu2 a.aparicion {
+    transform: translateX(0px);
+}
+.menu2 .activo {
+    color: crimson;
+}
+.menu2 a:hover {
+    color: lightyellow;
+    background-color: rgb(231, 169, 93);
+}
+.menu2 a:active {
+    color: tomato;
+}
+
+/* SECCIÓN HERO */
+.hero {
+    height: 100vh;
+    background-image: url('../img/hero.jpg');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    /* background-attachment: fixed; */ /* no me convence..., creo. 
+                A parte para los iphone retina no va, 
+                lo pondremos (si eso) en las media queries */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+.hero h1 {
+    color: white;
+    font-size: 50px;
+    text-shadow: 2px 2px 5px #3f2f2f,
+                 -2px 2px 5px #3f2f2f,
+                 2px -2px 5px #3f2f2f,
+                 -2px -2px 5px #3f2f2f;
+}
+.hero h2 {
+    color: rgb(209, 209, 209);
+    margin-bottom: 50px;
+}
+.hero a {
+    color: white;
+    font-size: 40px;    
+    margin-bottom: 30px;
+    animation-name: intermitente;
+    animation-duration: 1500ms;
+    animation-iteration-count: infinite; 
+}
+
+/* LAYOUT (maquetación) */
+.fila {
+    padding: 40px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.fila.margen-sup {
+    margin-top: 80px;
+}
+.ultima {
+    margin-bottom: 40px;
+}
+.col1 {
+    /* border: solid 1px chocolate;  */
+    padding: 10px;
+    flex-basis: 300px;  
+    flex-grow: 1;
+}
+.col2 {
+    /* border: solid 1px chocolate;  */
+    padding: 10px;    
+    flex-basis: 300px;  
+    flex-grow: 2;
+}
+.col3 {
+    /* border: solid 1px chocolate;  */
+    padding: 10px;    
+    flex-basis: 300px; 
+    flex-grow: 3;
+}
+.col100 {
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.centrado {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.piederecho {
+    display: flex;
+    align-items: flex-end;
+}
+.columna {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Sección con imagen de fondo */
+.fondo {
+    background-image: url('../img/apple-691798_1920.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 60px 40px;
+    background-attachment: fixed;  /* En los iphone retina no 
+    va, lo pondremos (si eso) en las media queries 
+    [lo he vuelto a poner ¬¬, no me convence la solución] */
+}
+.eslogan {
+    font-size: 40px;
+    /* color: lightyellow; */
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Formulario newsletter */
+.input_newsletter {
+    color: chocolate;
+    font-size: 20px;
+    padding: 15px;
+    padding-left: 23px;
+    border: 4px solid chocolate;
+    border-radius: 30px;
+}
+.boton_newsletter{
+    /* border: 1px solid blue; */
+    background: -webkit-repeating-linear-gradient( top, orange,chocolate, orangered);
+    font-size: 20px;    
+    color: white;
+    padding: 15px;
+    border: 4px solid chocolate;
+    margin: 10px 20px;
+    border-radius: 30px;    
+}
+.boton_newsletter:hover {
+    /* border: 1px solid blue;     */
+    /* background: orangered; */
+    background: -webkit-repeating-linear-gradient( top, orangered, chocolate, orange);
+    cursor: pointer;   
+    border: 4px solid orangered;  
+    margin: 10px 20px;    
+}
+.boton_newsletter:focus, .input_newsletter:focus {
+    outline: none;
+}
+.newsletter {
+    /* border: 1px solid blue;     */
+    font-size: 32px;
+    color: chocolate;
+}
+
+/* Footer */
+footer {
+    background:
+    radial-gradient(black 15%, transparent 16%) 0 0,
+    radial-gradient(black 15%, transparent 16%) 8px 8px,
+    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+    background-color:#282828;
+    background-size:16px 16px;
+
+    /* background-color:#556;
+    background-image: linear-gradient(30deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+    linear-gradient(150deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+    linear-gradient(30deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+    linear-gradient(150deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+    linear-gradient(60deg, #99a 25%, transparent 25.5%, transparent 75%, #99a 75%, #99a), 
+    linear-gradient(60deg, #99a 25%, transparent 25.5%, transparent 75%, #99a 75%, #99a);
+    background-size:80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px; */
+    
+    color: white; 
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 16px;   
+    position: relative;    
+}
+.top {
+    font-size: 50px;
+    position: absolute; /* position: relative al padre (footer) */
+    top: -40px;
+    right: 50%;
+    transform: translateX(50%);
+    color: orangered;
+    height:60px;
+    width: 60px;
+    background-color: #282828;
+    border-radius: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.izda {
+    /* border: 1px solid white; */
+    padding: 20px;
+}
+.izda p {
+    padding: 5px;    
+}
+.dcha {
+    /* border: 1px solid white; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 20px;
+}
+.dcha a {
+    color: white;
+    font-size: 30px;
+    margin: 5px;    
+}
+.legales a {
+    font-size: 14px;
+}
+.centro {
+    /* border: 1px solid white; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+}
+.centro a{
+    color: white;
+}
+a.activo {
+    color: chocolate; 
+    /* text-shadow: 1px 1px 0 lightyellow,
+                 -1px 1px 0 lightyellow,
+                 1px -1px 0 lightyellow,
+                 -1px -1px 0 lightyellow;    */
+}
+footer a:hover {
+    color: orange;
+}
+.minifooter p{
+    font-size: 14px;
+    padding: 5px;
+}
+
+/* ------------------- Estilos de Página HTML5 */
+.seccion {
+    display: flex;
+    padding: 0 40px;    
+}
+.contenedor-p {
+    /* width: 80%; */
+    flex-basis: 80%;
+    flex-grow: 1;
+    position: relative;
+}
+.btn-menu3 {
+    position: absolute; /* Relative al padre */
+    top: 0;
+    right: 0;
+    height: 50px;
+    width: 80px;
+    background-color: chocolate;
+    color: #dedede;
+    border-radius: 10px 10px 0 0;
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.btn-menu3 span {
+    transition: all 500ms;
+}
+.btn-menu3 span.girada {
+    transform: rotateZ(180deg);
+}
+.menu3 {
+    width: 20%;
+    display: none;
+    /* border: 1px solid chocolate; */
+}
+.menu3 ul {
+    height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-left: 0;
+    margin-top: 49px;
+    display: flex;
+    flex-direction: column;
+}
+.menu3 ul::-webkit-scrollbar {
+    width: 8px;
+}
+.menu3 ul::-webkit-scrollbar-track {
+    background-color: #c2c2c2;
+}
+.menu3 ul::-webkit-scrollbar-thumb {
+    background-color: chocolate;
+}
+.menu3 ul a {
+    width: 100%;
+    padding: 10px 20px;
+}
+.menu3 ul a:hover {
+    background-color: rgba(251, 219, 180, 0.85);
+    color: crimson;
+}
+.menu3 ul a.activo {
+    background-color: chocolate;
+    color: white;
+}
+.pestanyas {
+    display: flex;
+    list-style: none;  
+    padding-left: 0;
+    height: 50px;    
+}
+.pestanyas li {
+    color: chocolate;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #c2c2c2;    
+    border-radius: 10px 10px 0 0;
+    border: 1px solid chocolate;
+    margin-right: 5px;
+}
+.pestanyas li.pulsada {
+    background-color: #ededed;
+    border-radius: 10px 10px 0 0;
+    border-top: 1px solid chocolate;
+    border-left: 1px solid chocolate;
+    border-right: 1px solid chocolate;
+    border-bottom: none;
+}
+.contenido {
+    position: relative;
+    top: -1px;
+    z-index: -1;
+    background-color: #ededed;
+    padding: 15px;
+    border: 1px solid chocolate;
+    display: none;
+    height: 300px;
+}
+.contenido.mostrado {
+    display: block;
+}
+
+/* ------------------------ Estilos Página JavaScript */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* z-index: -10; */
+    display: none;
+}
+.overlay.visible {
+    display: initial;
+    z-index: 20;
+}
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    transform: translate(-50%, -50%); /*para q lo centre bien*/
+    background-color: palegoldenrod;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 21;
+    transition: all 500ms ease;
+}
+.modal button {
+    align-items: center;
+}
+.modal hr {
+    width: 100%;
+}
+.modal.visible {
+    visibility: visible;
+}
+.modal p:first-child {
+    font-size: 36px;
+    color: #DF4215;
+}
+
+/* Estilos de CONTACTO */
+/* .normal {
+    background-image: url('../img/por usar/descarga (1).jpg');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: contain;
+} */
+.direccion {
+    line-height: 1.8em;
+}
+iframe {
+    box-shadow: 4px 4px 8px gray;
+}
+h1 {
+    font-size: 34px;
+    padding: 10px;
+}
+h2 {
+    font-size: 26px;
+    padding: 10px;
+}
+ul {
+    padding-left: 60px;
+}
+li {
+    padding: 10px;
+    line-height: 1.4em;
+}
+
+/* Media Queries */
+
+/* Lo del PARALLAX lo he "quitado" porque no me gusta la solución
+@media (min-width: 1440px) {
+    .hero .fondo {
+        background-attachment: fixed;    Para coservar el 
+                            efecto parallax, solo en disp. 
+                            de más de 1440px 
+    }
+} */
+@media (max-width: 920px) {
+    .izda, .centro, .dcha {
+        flex-basis: 200px;
+    }
+}
+@media (max-width: 740px) {
+    .columna img {
+        height: 160px;
+    }
+    .columna .boton {
+        margin: 40px;
+        font-size: 18px;
+        padding: 12px;
+        border-radius: 20px;
+    }
+    .newsletter {
+        font-size: 24px; 
+        text-align: center;
+    }
+    .input_newsletter {
+        font-size: 18px;
+        padding: 12px;
+        border-radius: 25px;
+    }    
+    .boton_newsletter {
+        font-size: 18px;
+        padding: 12px;
+        border-radius: 25px;
+    }
+}
+/* @media (min-width: 620px) {
+    header .menu2 {
+        display: none;
+    }
+} */
+@media (max-width: 620px) {
+    .fila {
+        flex-direction: column;
+        align-items: center;
+    }
+    .separador {
+        display: initial;
+    }
+    .col1 {
+        flex-basis: initial;
+    }
+    .eslogan {
+        font-size: 26px;
+    }
+    nav {
+        display: none;
+    }
+    header .burger {
+        display: initial;
+    }
+    header .burger2 {
+        display: initial;
+    }
+    .hero h1 {
+        font-size: 36px;
+        text-align: center;
+    }
+    .hero h2 {
+        margin-bottom: 26px;
+        text-align: center;        
+    }
+    .col100 {
+        flex-direction: column;
+        align-items: center;
+    }
+    .izda, .centro, .dcha {
+        flex-basis: 100px;
+    }
+}
+@media (max-width: 420px) {
+    body {
+        font-size: 18px;
+    }
+    .fila {
+        padding: 20px 10px;
+    }
+}
+@media (max-width: 220px) {
+    .columna img {
+        height: 140px;
+    }
+    .columna .boton {
+        margin: 10px;
+        font-size: 14px;
+        padding: 10px;
+        border-radius: 14px;
+    }
+}
